@@ -1,0 +1,735 @@
+/* ============================================================
+   ChapaChat — Custom Design System
+   Navy & Gold palette derived from ChapaChat brand logo.
+   Deep navy blue (#1B2D6B) + golden yellow (#F5B731).
+   ============================================================ */
+
+/* ---------- Google Font ---------- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+/* ---------- Design Tokens ---------- */
+:root {
+    /* Primary: Deep navy blue from logo */
+    --cc-primary: #1B2D6B;
+    --cc-primary-hover: #152358;
+    --cc-primary-soft: #E8ECF5;
+    --cc-primary-muted: #7889B8;
+    --cc-primary-light: #2A4090;
+
+    /* Accent: Golden yellow from logo */
+    --cc-accent: #F5B731;
+    --cc-accent-hover: #E0A01A;
+    --cc-accent-soft: #FFF7E3;
+    --cc-accent-light: #FCCB5E;
+    --cc-accent-deep: #D4920E;
+
+    /* Secondary: Deep charcoal-navy */
+    --cc-dark: #111D45;
+    --cc-dark-soft: #1A2855;
+    --cc-dark-text: #0D1530;
+
+    /* Neutrals — cool-tinted to match navy */
+    --cc-bg: #F4F6FA;
+    --cc-surface: #FFFFFF;
+    --cc-border: #D8DDE8;
+    --cc-border-light: #E8ECF2;
+    --cc-text: #2D3553;
+    --cc-text-muted: #7A839C;
+    --cc-text-light: #A0A8BE;
+
+    /* Semantic */
+    --cc-success: #2D9A5A;
+    --cc-success-soft: #E4F5EC;
+    --cc-danger: #D03E3E;
+    --cc-danger-soft: #FDECEC;
+    --cc-info: #3478C6;
+    --cc-info-soft: #E5F0FC;
+    --cc-warning: #E8960E;
+    --cc-warning-soft: #FFF5E0;
+
+    /* Sizing */
+    --cc-radius: 12px;
+    --cc-radius-lg: 16px;
+    --cc-radius-sm: 8px;
+    --cc-shadow: 0 1px 3px rgba(27, 45, 107, 0.06), 0 4px 12px rgba(27, 45, 107, 0.04);
+    --cc-shadow-lg: 0 4px 16px rgba(27, 45, 107, 0.08), 0 8px 32px rgba(27, 45, 107, 0.04);
+    --cc-transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--cc-text);
+    background-color: var(--cc-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--cc-primary);
+    text-decoration: none;
+    transition: color var(--cc-transition);
+}
+a:hover {
+    color: var(--cc-primary-hover);
+}
+
+/* ---------- Navbar ---------- */
+.navbar-custom {
+    background: linear-gradient(135deg, var(--cc-dark) 0%, var(--cc-primary) 100%);
+    border-bottom: 2px solid var(--cc-accent);
+    padding-top: 0.55rem;
+    padding-bottom: 0.55rem;
+}
+
+.navbar-custom .navbar-brand {
+    letter-spacing: -0.3px;
+    gap: 0.5rem;
+}
+
+/* Logo image in navbar */
+.navbar-custom .navbar-brand img {
+    height: 36px;
+    width: 36px;
+    object-fit: contain;
+    border-radius: 8px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+}
+
+.navbar-custom .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--cc-radius-sm);
+    transition: all var(--cc-transition);
+    position: relative;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar-custom .nav-link.active {
+    color: var(--cc-accent);
+    background: rgba(245, 183, 49, 0.1);
+    font-weight: 600;
+}
+
+/* Active nav indicator dot */
+.navbar-custom .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 3px;
+    background: var(--cc-accent);
+    border-radius: 2px;
+}
+
+/* Dropdown in navbar */
+.navbar-custom .dropdown-menu {
+    background: var(--cc-surface);
+    border: 1px solid var(--cc-border);
+    border-radius: var(--cc-radius);
+    box-shadow: var(--cc-shadow-lg);
+    padding: 0.35rem;
+    margin-top: 0.5rem;
+    animation: fadeSlideDown 0.18s ease-out;
+}
+
+.navbar-custom .dropdown-item {
+    border-radius: var(--cc-radius-sm);
+    padding: 0.5rem 0.85rem;
+    font-size: 0.88rem;
+    color: var(--cc-text);
+    transition: background var(--cc-transition);
+}
+.navbar-custom .dropdown-item:hover {
+    background: var(--cc-primary-soft);
+    color: var(--cc-primary);
+}
+.navbar-custom .dropdown-item.text-danger:hover {
+    background: var(--cc-danger-soft);
+}
+
+/* User button in navbar */
+.navbar-custom .btn-outline-light {
+    border-color: rgba(245, 183, 49, 0.3);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: all var(--cc-transition);
+    background: rgba(245, 183, 49, 0.08);
+}
+.navbar-custom .btn-outline-light:hover {
+    background: rgba(245, 183, 49, 0.15);
+    border-color: rgba(245, 183, 49, 0.5);
+}
+
+/* Role badge next to user name */
+.navbar-custom .badge.bg-warning {
+    background: var(--cc-accent) !important;
+    color: var(--cc-dark) !important;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+/* ---------- Card System ---------- */
+.card {
+    border: 1px solid var(--cc-border);
+    border-radius: var(--cc-radius-lg) !important;
+    box-shadow: var(--cc-shadow);
+    transition: box-shadow var(--cc-transition), transform var(--cc-transition);
+    overflow: hidden;
+}
+
+.card:hover {
+    box-shadow: var(--cc-shadow-lg);
+}
+
+.card-header {
+    font-weight: 600;
+    border-bottom: 1px solid var(--cc-border-light);
+    background: var(--cc-surface);
+}
+
+.card-header-primary {
+    background: linear-gradient(135deg, var(--cc-primary) 0%, var(--cc-primary-light) 100%) !important;
+    color: #ffffff;
+    border-bottom: 2px solid var(--cc-accent);
+}
+
+.card-footer {
+    background: var(--cc-bg) !important;
+    border-top: 1px solid var(--cc-border-light);
+}
+
+/* ---------- Stat Cards (Dashboard) ---------- */
+.stat-card {
+    border-left: 4px solid var(--cc-primary) !important;
+    border-radius: var(--cc-radius) !important;
+    transition: transform var(--cc-transition), box-shadow var(--cc-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 70px;
+    height: 70px;
+    background: var(--cc-accent-soft);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity var(--cc-transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--cc-shadow-lg);
+}
+.stat-card:hover::before {
+    opacity: 1;
+}
+
+/* Stat card icon bubbles */
+.stat-card .rounded-circle {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ---------- Welcome Banner ---------- */
+.border-primary {
+    border-color: var(--cc-accent) !important;
+}
+
+/* Welcome banner overrides */
+.bg-white.rounded-3.shadow-sm.border-start.border-4.border-primary {
+    border-color: var(--cc-accent) !important;
+    border-radius: var(--cc-radius-lg) !important;
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--cc-accent-soft) 100%) !important;
+}
+
+/* ---------- Table Styling ---------- */
+.table {
+    --bs-table-bg: transparent;
+}
+
+.table thead {
+    border-bottom: 2px solid var(--cc-border);
+}
+
+.table thead th {
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--cc-text-muted);
+    padding: 0.85rem 1rem;
+    background: var(--cc-bg);
+    border-bottom: none !important;
+}
+
+.table tbody tr {
+    transition: background var(--cc-transition);
+    border-bottom: 1px solid var(--cc-border-light);
+}
+
+.table tbody td {
+    padding: 0.85rem 1rem;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+.table-hover tbody tr:hover {
+    background: var(--cc-primary-soft) !important;
+}
+
+/* Unread message row highlight */
+.table-unread {
+    font-weight: 700;
+    background: var(--cc-accent-soft) !important;
+    border-left: 3px solid var(--cc-accent);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    border-radius: var(--cc-radius-sm);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all var(--cc-transition);
+    letter-spacing: 0.01em;
+}
+
+.btn-primary {
+    background: var(--cc-primary);
+    border-color: var(--cc-primary);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--cc-primary-hover);
+    border-color: var(--cc-primary-hover);
+    box-shadow: 0 4px 12px rgba(27, 45, 107, 0.3);
+    transform: translateY(-1px);
+}
+.btn-primary:active {
+    transform: translateY(0);
+    background: var(--cc-primary-hover);
+    border-color: var(--cc-primary-hover);
+}
+
+.btn-outline-primary {
+    color: var(--cc-primary);
+    border-color: var(--cc-primary);
+}
+.btn-outline-primary:hover {
+    background: var(--cc-primary);
+    border-color: var(--cc-primary);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(27, 45, 107, 0.2);
+}
+
+.btn-warning {
+    background: var(--cc-accent);
+    border-color: var(--cc-accent);
+    color: var(--cc-dark) !important;
+    font-weight: 600;
+}
+.btn-warning:hover {
+    background: var(--cc-accent-hover);
+    border-color: var(--cc-accent-hover);
+    color: var(--cc-dark) !important;
+    box-shadow: 0 4px 12px rgba(245, 183, 49, 0.3);
+}
+
+.btn-outline-secondary {
+    border-color: var(--cc-border);
+    color: var(--cc-text-muted);
+}
+.btn-outline-secondary:hover {
+    background: var(--cc-bg);
+    border-color: var(--cc-text-muted);
+    color: var(--cc-text);
+}
+
+.btn-outline-danger {
+    color: var(--cc-danger);
+    border-color: var(--cc-danger);
+}
+.btn-outline-danger:hover {
+    background: var(--cc-danger);
+    border-color: var(--cc-danger);
+    color: #fff;
+}
+
+.btn-danger {
+    background: var(--cc-danger);
+    border-color: var(--cc-danger);
+}
+.btn-danger:hover {
+    background: #b83333;
+    border-color: #b83333;
+}
+
+.btn-success {
+    background: var(--cc-success);
+    border-color: var(--cc-success);
+}
+.btn-success:hover {
+    background: #237a47;
+    border-color: #237a47;
+}
+
+/* Guest register CTA in navbar */
+.navbar-custom .btn-warning {
+    background: var(--cc-accent) !important;
+    border-color: var(--cc-accent) !important;
+    color: var(--cc-dark) !important;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+.navbar-custom .btn-warning:hover {
+    background: var(--cc-accent-hover) !important;
+    border-color: var(--cc-accent-hover) !important;
+    box-shadow: 0 2px 10px rgba(245, 183, 49, 0.4);
+}
+
+/* ---------- Form Controls ---------- */
+.form-control,
+.form-select {
+    border-radius: var(--cc-radius-sm);
+    border-color: var(--cc-border);
+    padding: 0.6rem 0.85rem;
+    font-size: 0.9rem;
+    transition: border-color var(--cc-transition), box-shadow var(--cc-transition);
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--cc-primary-muted);
+    box-shadow: 0 0 0 3px rgba(27, 45, 107, 0.1);
+}
+
+.input-group-text {
+    background: var(--cc-bg);
+    border-color: var(--cc-border);
+    color: var(--cc-primary);
+    border-radius: var(--cc-radius-sm) 0 0 var(--cc-radius-sm);
+}
+
+.form-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--cc-text);
+    margin-bottom: 0.35rem;
+}
+
+/* ---------- Badges ---------- */
+.badge {
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.3px;
+    border-radius: 6px;
+    padding: 0.3em 0.6em;
+}
+
+.badge.bg-danger {
+    background: var(--cc-danger) !important;
+}
+.badge.bg-success {
+    background: var(--cc-success) !important;
+}
+.badge.bg-secondary {
+    background: var(--cc-text-muted) !important;
+}
+.badge.bg-info {
+    background: var(--cc-info) !important;
+    color: #fff !important;
+}
+.badge.bg-primary {
+    background: var(--cc-primary) !important;
+}
+.badge.bg-warning {
+    background: var(--cc-accent) !important;
+    color: var(--cc-dark) !important;
+}
+
+/* ---------- Alerts ---------- */
+.alert {
+    border-radius: var(--cc-radius);
+    border: none;
+    font-size: 0.9rem;
+}
+
+.alert-success {
+    background: var(--cc-success-soft);
+    color: #1d6b3e;
+}
+.alert-danger {
+    background: var(--cc-danger-soft);
+    color: #a82e2e;
+}
+.alert-info {
+    background: var(--cc-info-soft);
+    color: var(--cc-primary);
+}
+
+/* Demo OTP alert special styling */
+.alert-demo-otp {
+    background: linear-gradient(135deg, var(--cc-accent-soft) 0%, #FFFDF5 100%) !important;
+    border: 1px solid rgba(245, 183, 49, 0.25) !important;
+}
+
+/* ---------- Pagination ---------- */
+.page-link {
+    color: var(--cc-primary);
+    border-color: var(--cc-border);
+    border-radius: var(--cc-radius-sm);
+    margin: 0 2px;
+    font-size: 0.85rem;
+    transition: all var(--cc-transition);
+}
+.page-link:hover {
+    background: var(--cc-primary-soft);
+    border-color: var(--cc-primary-muted);
+    color: var(--cc-primary);
+}
+.page-item.active .page-link {
+    background: var(--cc-primary);
+    border-color: var(--cc-primary);
+}
+
+/* ---------- Footer ---------- */
+footer.bg-dark {
+    background: linear-gradient(135deg, var(--cc-dark) 0%, var(--cc-primary) 100%) !important;
+    border-top: 2px solid var(--cc-accent);
+}
+
+/* ---------- Cipher Code Block Display ---------- */
+.code-cipher {
+    font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.8rem;
+    background: var(--cc-dark);
+    color: var(--cc-accent);
+    padding: 0.85rem;
+    border-radius: var(--cc-radius-sm);
+    word-break: break-all;
+    border: 1px solid rgba(245, 183, 49, 0.15);
+}
+
+/* ---------- Utility Classes ---------- */
+.fs-7 {
+    font-size: 0.85rem;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}
+.letter-spacing-3 {
+    letter-spacing: 4px;
+}
+
+/* OTP code input special styling */
+#otp_code {
+    letter-spacing: 8px;
+    font-size: 1.8rem !important;
+    border: 2px solid var(--cc-border);
+    border-radius: var(--cc-radius);
+    padding: 0.75rem;
+    font-weight: 700;
+    color: var(--cc-primary);
+}
+#otp_code:focus {
+    border-color: var(--cc-accent);
+    box-shadow: 0 0 0 4px rgba(245, 183, 49, 0.15);
+}
+
+/* Demo OTP display code */
+.display-6.text-primary {
+    color: var(--cc-primary) !important;
+}
+
+/* ---------- Color token overrides for Bootstrap utilities ---------- */
+.text-danger {
+    color: var(--cc-danger) !important;
+}
+
+.text-primary {
+    color: var(--cc-primary) !important;
+}
+
+.text-info {
+    color: var(--cc-info) !important;
+}
+
+.text-success {
+    color: var(--cc-success) !important;
+}
+
+.text-warning {
+    color: var(--cc-accent) !important;
+}
+
+.text-muted {
+    color: var(--cc-text-muted) !important;
+}
+
+.text-secondary {
+    color: var(--cc-text-light) !important;
+}
+
+/* Background override */
+.bg-light {
+    background-color: var(--cc-bg) !important;
+}
+
+.bg-primary {
+    background-color: var(--cc-primary) !important;
+}
+
+/* Admin-specific banner border */
+.border-danger {
+    border-color: var(--cc-danger) !important;
+}
+
+/* ---------- Accordion ---------- */
+.accordion-button:not(.collapsed) {
+    background: var(--cc-primary-soft);
+    color: var(--cc-primary);
+    box-shadow: none;
+}
+.accordion-button:focus {
+    box-shadow: 0 0 0 3px rgba(27, 45, 107, 0.1);
+    border-color: var(--cc-primary-muted);
+}
+.accordion-item {
+    border-color: var(--cc-border);
+    border-radius: var(--cc-radius-sm) !important;
+    overflow: hidden;
+}
+
+/* ---------- Empty state icons ---------- */
+.display-4.text-secondary {
+    color: var(--cc-text-light) !important;
+    opacity: 0.5;
+}
+
+/* ---------- Auth card special styling ---------- */
+/* Login/Register/OTP cards — add golden accent line */
+.card-header-primary + .card-body {
+    border-top: 0;
+}
+
+/* ---------- Scrollbar (webkit) ---------- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--cc-bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--cc-border);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cc-text-light);
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animate cards on page load */
+.card,
+.stat-card {
+    animation: cardFadeIn 0.4s ease-out both;
+}
+.stat-card:nth-child(1) { animation-delay: 0.05s; }
+.stat-card:nth-child(2) { animation-delay: 0.1s; }
+.stat-card:nth-child(3) { animation-delay: 0.15s; }
+.stat-card:nth-child(4) { animation-delay: 0.2s; }
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Alert entrance */
+.alert.fade.show {
+    animation: alertSlideIn 0.3s ease-out;
+}
+@keyframes alertSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating effect for brand logo */
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+.navbar-brand img {
+    animation: floatLogo 3s ease-in-out infinite;
+}
+
+/* ---------- Responsive Fine-tuning ---------- */
+@media (max-width: 768px) {
+    .navbar-custom .nav-link {
+        padding: 0.6rem 0.5rem;
+    }
+    .navbar-custom .nav-link.active::after {
+        display: none;
+    }
+    .stat-card .rounded-circle {
+        width: 44px;
+        height: 44px;
+    }
+    .stat-card .fs-2 {
+        font-size: 1.25rem !important;
+    }
+}

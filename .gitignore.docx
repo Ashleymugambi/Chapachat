@@ -1,0 +1,5 @@
+config/config.php
+backups/*.sql
+!backups/.htaccess
+*.log
+
